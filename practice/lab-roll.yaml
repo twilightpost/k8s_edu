@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels: 
+    type: proxy
+    app: rollout
+  name: rollout
+spec:
+  strategy:
+    rollingUpdate :
+      maxSurge: {}
+      maxUnavailable: 2
+  replicas: 5
+  selector:
+    matchLabels:
+      app: rollout
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rollout
+        type: proxy
+    spec:
+      containers:
+      - image: nginx:1.9
+        name: nginx
+        resources: {}
+status: {}

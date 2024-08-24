@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rolling
+  name: rolling
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10  
+  selector:
+    matchLabels:
+      app: rolling
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rolling
+    spec:
+      containers:
+      - image: nginx:1.8
+        name: nginx
+        resources: {}
+status: {}
